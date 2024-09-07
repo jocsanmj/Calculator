@@ -44,6 +44,7 @@ function calculate() {
     operation = '';
     firstNumber = '';
     updateDisplay();
+    document.getElementById('result').textContent = currentInput;
 }
 
 function clearDisplay() {
@@ -51,6 +52,7 @@ function clearDisplay() {
     operation = '';
     firstNumber = '';
     updateDisplay();
+    document.getElementById('result').textContent = '0';
 }
 
 function updateDisplay() {
