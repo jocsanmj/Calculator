@@ -1,6 +1,7 @@
 let currentInput = '';
 let operation = '';
 let firstNumber = '';
+let fullExpression = '';
 
 document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', handleKeyboardInput);
@@ -31,9 +32,11 @@ function setOperation(op) {
     if (firstNumber !== '') {
         calculate();
     }
-    firstNumber = currentInput;
     operation = op;
+    firstNumber = currentInput;
+    fullExpression = `${firstNumber} ${operation}`;
     currentInput = '';
+    updateDisplay();
 }
 
 function calculate() {
@@ -60,6 +63,7 @@ function calculate() {
     }
 
     currentInput = result.toString();
+    fullExpression = '';
     operation = '';
     firstNumber = '';
     updateDisplay();
@@ -70,10 +74,15 @@ function clearDisplay() {
     currentInput = '';
     operation = '';
     firstNumber = '';
+    fullExpression = '';
     updateDisplay();
     document.getElementById('result').textContent = '0';
 }
 
 function updateDisplay() {
-    document.getElementById('display').value = currentInput;
+    if (fullExpression) {
+        document.getElementById('display').value = fullExpression + (currentInput || '');
+    } else {
+        document.getElementById('display').value = currentInput;
+    }
 }
