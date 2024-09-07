@@ -18,6 +18,8 @@ function handleKeyboardInput(event) {
         calculate();
     } else if (key === 'Escape') {
         clearDisplay();
+    } else if (key === 'Backspace') {
+        clearCurrentInput();
     }
 }
 
@@ -77,6 +79,11 @@ function clearDisplay() {
     fullExpression = '';
     updateDisplay();
     document.getElementById('result').textContent = '0';
+}
+
+function clearCurrentInput() {
+    currentInput = '';
+    updateDisplay();
 }
 
 function updateDisplay() {
